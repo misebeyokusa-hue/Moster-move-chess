@@ -1,19 +1,16 @@
-# Master Move Chess — first PWA web release
+# Master Move Chess — corrected PWA package
 
-Upload all six app files in this folder to the ROOT of your GitHub repository:
-- index.html
-- manifest.webmanifest
-- sw.js
-- icon-192.png
-- icon-512.png
-- icon-512-maskable.png
+This package is based on the uploaded GitHub Pages archive. It preserves the supplied `index.html`, manifest, and icons. The supplied HTML uses embedded CSS, so no separate stylesheet is required for this build.
 
-Then enable GitHub Pages:
-1. Repository → Settings → Pages.
-2. Under Build and deployment, choose Deploy from a branch.
-3. Branch: main. Folder: / (root). Save.
-4. Wait for the published URL to appear.
+## Upload/update on GitHub
+1. Open the `master-move-chess` repository.
+2. Choose Add file → Upload files.
+3. Upload/replace these items in the repository root: `index.html`, `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`, and `icon-512-maskable.png`.
+5. Commit the changes to `main`.
+6. Keep GitHub Pages set to `main` and `/(root)`.
 
-Open the HTTPS URL in Chrome on Android. Use the three-dot menu and choose Install app or Add to Home screen if offered.
+## Fix included
+The previous service worker requested icons from `./icons/`, but the archive stores them in the repository root. This version corrects those paths and uses cache name v2 so browsers replace the old cache. The install process is also resilient if an optional local asset is missing.
 
-Limitations: this is the existing version 0.2 local prototype packaged as a PWA. The chess rules library loads from an external CDN and needs internet. No accounts, online multiplayer, Stockfish AI, cloud game storage, tournaments backend, payments, or CHCA PLAY integration are included.
+## Current app scope
+The supplied app includes a local two-player chessboard and page sections for Home, Play, AI, Learn, Events, Clubs, Connect, and Profile. The source does not implement real account storage, online multiplayer, server-backed club administration, payments, or a working chess AI. The chess rules library is imported from `https://esm.sh/chess.js@1.4.0`, so gameplay requires an internet connection to load that library. This package does not add those missing backend services.
